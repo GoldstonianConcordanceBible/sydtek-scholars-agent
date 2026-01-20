@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "handoff_v1.json",
+  "type": "object",
+  "required": ["schema_version","request_id","timestamp_iso","from_agent","to_agent","intent","context","ask"],
+  "properties": {
+    "schema_version": { "const": "handoff_v1" },
+    "request_id": { "type": "string" },
+    "timestamp_iso": { "type": "string" },
+    "from_agent": {
+      "type": "object",
+      "required": ["name","repo"],
+      "properties": { "name": { "type": "string" }, "repo": { "type": "string" } }
+    },
+    "to_agent": {
+      "type": "object",
+      "required": ["name"],
+      "properties": { "name": { "const": "gcb-agent" } }
+    },
+    "intent": { "type": "string" },
+    "context": {
+      "type": "object",
+      "required": ["topic","audience","constraints"],
+      "properties": {
+        "topic": { "type": "string" },
+        "audience": { "type": "string" },
+        "grade_band": { "type": "string" },
+        "constraints": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "ask": {
+      "type": "object",
+      "properties": {
+        "max_items": { "type": "number" },
+        "response_format": { "type": "string" }
+      }
+    }
+  }
+}
