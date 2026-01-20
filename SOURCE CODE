@@ -1,0 +1,7 @@
+import "dotenv/config";
+import { runOnceOrSchedule } from "./scheduler/cron.js";
+
+const args = process.argv.slice(2);
+const once = args.includes("--once");
+
+await runOnceOrSchedule({ once });
