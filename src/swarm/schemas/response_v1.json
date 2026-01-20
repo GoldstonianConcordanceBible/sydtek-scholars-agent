@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "response_v1.json",
+  "type": "object",
+  "required": ["schema_version","request_id","ok"],
+  "properties": {
+    "schema_version": { "const": "response_v1" },
+    "request_id": { "type": "string" },
+    "ok": { "type": "boolean" },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "references": { "type": "array", "items": { "type": "string" } },
+        "doctrine_card": { "type": "string" },
+        "routing": { "type": "array", "items": { "type": "string" } },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "cautions": { "type": "array", "items": { "type": "string" } },
+        "facts": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "error": {
+      "type": "object",
+      "properties": { "message": { "type": "string" } }
+    }
+  }
+}
